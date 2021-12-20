@@ -2,6 +2,7 @@ import numpy as np
 
 def preprocessing(data):
     # was the person alone
+    data = data.copy()
     data['alone'] = np.where((data['SibSp']==0) & (data['Parch']==0), 1, 0)
 
     # family member total

@@ -22,7 +22,7 @@ class AppConfig(BaseModel):
     training_data: str
     testing_data: str
     model_name: str
-    pipeline_save_name: str
+    pipeline_save_file: str
 
 class ModelConfig(BaseModel):
     """
