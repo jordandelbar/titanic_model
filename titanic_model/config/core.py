@@ -10,8 +10,8 @@ import titanic_model
 PACKAGE_ROOT = Path(titanic_model.__file__).resolve().parent
 ROOT = PACKAGE_ROOT.parent
 CONFIG_FILE_PATH = PACKAGE_ROOT / 'config.yml'
-DATASETS_DIR = PACKAGE_ROOT / 'datasets'
-TRAINED_MODELS_DIR = PACKAGE_ROOT / 'trained_models'
+DATASET_DIR = PACKAGE_ROOT / 'datasets'
+TRAINED_MODEL_DIR = PACKAGE_ROOT / 'trained_models'
 
 class AppConfig(BaseModel):
     """
@@ -30,7 +30,7 @@ class ModelConfig(BaseModel):
     """
 
     target: str
-    feature: List[str]
+    features: List[str]
     categorical_vars: List[str]
     numerical_vars: List[str]
     cat_to_impute: List[str]
@@ -38,6 +38,8 @@ class ModelConfig(BaseModel):
     rare_label_to_group: List[str]
     target_label_encoding: List[str]
     feature_to_scale: List[str]
+    test_size: float
+    random_state: int
 
 class Config(BaseModel):
     """
@@ -84,3 +86,5 @@ def create_and_validate_config(parsed_config: YAML = None) -> Config:
         )
     
     return _config
+
+config = create_and_validate_config()

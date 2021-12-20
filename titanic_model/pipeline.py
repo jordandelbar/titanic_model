@@ -1,12 +1,13 @@
-from sklearn.Pipeline import Pipeline
+from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from feature_engine.imputation import (CategoricalImputer, 
                                        MeanMedianImputer)
 from feature_engine.encoding import (MeanEncoder, 
                                      RareLabelEncoder)
+from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 
-from titanic_model.config import config
+from titanic_model.config.core import config
 
 
 titanic_pipeline = Pipeline([

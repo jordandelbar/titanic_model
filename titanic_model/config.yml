@@ -12,11 +12,11 @@ target: Survived
 # features
 features:
   - 'Pclass'
-  - 'Name'
   - 'Sex'
   - 'Age'
-  - 'SibSp'
-  - 'Parch'
+  - 'family'
+  - 'is_baby'
+  - 'title'
   - 'Fare'
   - 'Embarked'
 
@@ -28,7 +28,7 @@ pipeline_save_name: titanic_model_pipe_v
 test_size: 0.2
 
 # random seed for reproducibility
-random_seed: 42
+random_state: 42
 
 # feature engineering
 categorical_vars:
