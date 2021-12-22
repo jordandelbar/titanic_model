@@ -11,13 +11,16 @@ target: Survived
 
 # features
 features:
+  - 'PassengerId'
   - 'Pclass'
   - 'Name'
   - 'Sex'
   - 'Age'
   - 'SibSp'
   - 'Parch'
+  - 'Ticket'
   - 'Fare'
+  - 'Cabin'
   - 'Embarked'
 
 # model info
@@ -31,6 +34,14 @@ test_size: 0.2
 random_state: 42
 
 # feature engineering
+features_to_drop:
+  - 'PassengerId'
+  - 'Name'
+  - 'SibSp'
+  - 'Parch'
+  - 'Ticket'
+  - 'Cabin'
+
 categorical_vars:
   - 'Pclass'
   - 'Sex'

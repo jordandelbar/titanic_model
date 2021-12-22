@@ -31,6 +31,7 @@ class ModelConfig(BaseModel):
 
     target: str
     features: List[str]
+    features_to_drop: List[str]
     categorical_vars: List[str]
     numerical_vars: List[str]
     cat_to_impute_frequent: List[str]

@@ -14,7 +14,8 @@ def drop_na_inputs(*, input_data: pd.DataFrame) -> pd.DataFrame:
         var
         for var in config.model_config.features
         if var
-        not in config.model_config.cat_to_impute +
+        not in config.model_config.cat_to_impute_frequent +
+               config.model_config.cat_to_impute_missing + 
                config.model_config.num_to_impute
         and validated_data[var].isnull().sum() > 0
     ]
@@ -42,13 +43,16 @@ def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional
 
 
 class TitanicInputSchema(BaseModel):
+    PassengerID: Optional[int]
     Pclass: Optional[int]
     Name: Optional[str]
     Sex: Optional[str]
     Age: Optional[float]
     SibSp: Optional[int]
     Parch: Optional[int]
+    Ticket: Optional[str]
     Fare: Optional[float]
+    Cabin: Optional[str]
     Embarked: Optional[str]
 
 
