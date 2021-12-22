@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 from pydantic import BaseModel, ValidationError
 
-from titanic_model.processing.features import preprocessing
 from titanic_model.config.core import config
 
 
@@ -28,7 +27,6 @@ def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional
     """Check model inputs for unprocessable values."""
 
     relevant_data = input_data[config.model_config.features].copy()
-    relevant_data = preprocessing(relevant_data)
     validated_data = drop_na_inputs(input_data=relevant_data)
     errors = None
 
