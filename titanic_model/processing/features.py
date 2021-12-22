@@ -1,26 +1,32 @@
 import numpy as np
+import pandas as pd
+from sklearn.base import BaseEstimator, TransformerMixin
 
-def preprocessing(data):
-    # was the person alone
-    data = data.copy()
-    data['alone'] = np.where((data['SibSp']==0) & (data['Parch']==0), 1, 0)
+class preprocessing(BaseEstimator, TransformerMixin):
+    """class to determine if the passenger is a baby"""
 
-    # family member total
-    data['family'] = data['SibSp'] + data['Parch']
+    def __init__(self):
+        pass
+    
+    def fit(self, X: pd.DataFrame, y: pd.Series = None):
+        # fit statement to accomodate the sklearn pipeline
+        return self
 
-    # was the person a baby
-    data['is_baby'] = np.where(data['Age'] < 5, 1, 0)
-
-    # create a title column
-    data['title'] = data.Name.str.extract(' ([A-Za-z]+)\.', expand=False)
-
-    data['title'] = data['title'].replace('Mlle', 'Miss')
-    data['title'] = data['title'].replace('Ms', 'Miss')
-    data['title'] = data['title'].replace('Mme', 'Mrs')
-    data['title'] = data['title'].replace('Don', 'Mr')
-    data['title'] = data['title'].replace('Dona', 'Mrs')
-
-    # drop data not needed anymore
-    data.drop(['SibSp', 'Parch', 'Name'], axis=1, inplace=True)
-
-    return data
+    def transform(self, X: pd.DataFrame) -> pd.DataFrame:
+        X = X.copy()
+        # is the passenger a baby
+        X['is_baby'] = np.where(X['Age'] < 5, 1, 0)
+        # was the passenger travelling alone
+        X['alone'] = np.where((X['SibSp']==0) & (X['Parch']==0), 1, 0)
+        # family member total
+        X['family'] = X['SibSp'] + X['Parch']
+        # create a title column
+        X['title'] = X.Name.str.extract(' ([A-Za-z]+)\.', expand=False)
+        X['title'] = X['title'].replace('Mlle', 'Miss')
+        X['title'] = X['title'].replace('Ms', 'Miss')
+        X['title'] = X['title'].replace('Mme', 'Mrs')
+        X['title'] = X['title'].replace('Don', 'Mr')
+        X['title'] = X['title'].replace('Dona', 'Mrs')
+        # drop features not useful anymore
+        X.drop(['SibSp', 'Parch', 'Name'], axis=1, inplace=True)
+        return X

@@ -12,11 +12,11 @@ target: Survived
 # features
 features:
   - 'Pclass'
+  - 'Name'
   - 'Sex'
   - 'Age'
-  - 'family'
-  - 'is_baby'
-  - 'title'
+  - 'SibSp'
+  - 'Parch'
   - 'Fare'
   - 'Embarked'
 
@@ -40,8 +40,11 @@ numerical_vars:
   - Age
   - Fare
 
-cat_to_impute:
+cat_to_impute_frequent:
   - 'Embarked'
+
+cat_to_impute_missing:
+  - 'title'
 
 num_to_impute:
   - 'Age'

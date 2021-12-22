@@ -8,12 +8,17 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 
 from titanic_model.config.core import config
+from titanic_model.processing.features import preprocessing
 
 
 titanic_pipeline = Pipeline([
-        ('categorical_imputer', 
+        ('preprocessing', preprocessing()),
+        ('categorical_imputer_frequent', 
          CategoricalImputer(imputation_method='frequent', 
-                            variables=config.model_config.cat_to_impute)),
+                            variables=config.model_config.cat_to_impute_frequent)),
+        ('categorical_imputer_missing', 
+         CategoricalImputer(imputation_method='missing', 
+                            variables=config.model_config.cat_to_impute_missing)),
         ('median_imputer', 
          MeanMedianImputer(imputation_method='median', 
                            variables=config.model_config.num_to_impute)),

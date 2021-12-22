@@ -11,7 +11,6 @@ from titanic_model.config.core import DATASET_DIR, TRAINED_MODEL_DIR, config
 
 def load_dataset(*, file_name: str) -> pd.DataFrame:
     data = pd.read_csv(Path(f"{DATASET_DIR}/{file_name}"))
-    data = preprocessing(data)
     return data
 
 def save_pipeline(*, pipeline_to_persist: Pipeline):
