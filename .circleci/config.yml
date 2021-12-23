@@ -1,4 +1,4 @@
-version: 1
+version: 2
 
 defaults: &defaults
   docker:
@@ -37,3 +37,7 @@ jobs:
           name: Runnning app tests
           command: |
             tox
+workflows:
+  version: 2
+    jobs:
+      - test_package
