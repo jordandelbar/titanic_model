@@ -39,5 +39,6 @@ jobs:
             tox
 workflows:
   version: 2
-  jobs:
-    - test_package
+  section:
+    jobs:
+      - test_package
