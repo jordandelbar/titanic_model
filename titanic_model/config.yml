@@ -55,6 +55,7 @@ vars_with_na:
   - Age
   - Embarked
   - Cabin
+  - Fare
 
 cat_to_impute_frequent:
   - 'Embarked'
@@ -64,6 +65,7 @@ cat_to_impute_missing:
 
 num_to_impute:
   - 'Age'
+  - 'Fare'
 
 rare_label_to_group:
   - 'title'
