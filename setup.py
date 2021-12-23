@@ -6,7 +6,7 @@ from pathlib import Path
 from setuptools import find_packages, setup
 
 # Package meta-data.
-NAME = 'titanic-model'
+NAME = 'titanic-model-jd88'
 DESCRIPTION = "ML model on the titanic sinking survivors"
 URL = "https://github.com/jordandelbar/titanic"
 EMAIL = "jordandelbar@gmail.com"

@@ -43,7 +43,7 @@ def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional
 
 
 class TitanicInputSchema(BaseModel):
-    PassengerID: Optional[int]
+    PassengerId: Optional[int]
     Pclass: Optional[int]
     Name: Optional[str]
     Sex: Optional[str]
