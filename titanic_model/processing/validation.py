@@ -26,9 +26,7 @@ def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional
     """Check model inputs for unprocessable values."""
 
     relevant_data = input_data[config.model_config.features].copy()
-    print(relevant_data)
     validated_data = drop_na_inputs(input_data=relevant_data)
-    print(validated_data)
     errors = None
 
     try:
