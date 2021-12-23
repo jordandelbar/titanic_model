@@ -3,7 +3,7 @@ version: 1
 defaults: &defaults
   docker:
     - image: circleci/python:3.9.5
-  working_directory: ~/project
+  working_directory: ~/titanic
 
 prepare_venv: &prepare_venv
   run:
@@ -23,15 +23,15 @@ fetch_data: &fetch_data
     name: Set script permissions and fetch data
     command: |
       source venv/bin/activate
-      chmod +x ./scripts/fetch_kaggle_dataset.sh
-      ./scripts/fetch_kaggle_dataset.sh
+      chmod +x ./scripts/get_datasets.sh
+      ./scripts/get_datasets.sh
 jobs:
   test_package:
     <<: *defaults
-    working_directory: ~/titanic_model
+    working_directory: ~/titanic
     steps:
       - checkout:
-          path: ~/titanic_model
+          path: ~/titanic
       - *prepare_tox
       - run:
           name: Runnning app tests
