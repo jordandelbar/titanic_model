@@ -6,7 +6,6 @@ from sklearn.pipeline import Pipeline
 import joblib
 
 from titanic_model import __version__ as _version
-from titanic_model.processing.features import preprocessing
 from titanic_model.config.core import DATASET_DIR, TRAINED_MODEL_DIR, config
 
 def load_dataset(*, file_name: str) -> pd.DataFrame:

@@ -51,6 +51,11 @@ numerical_vars:
   - Age
   - Fare
 
+vars_with_na:
+  - Age
+  - Embarked
+  - Cabin
+
 cat_to_impute_frequent:
   - 'Embarked'
 

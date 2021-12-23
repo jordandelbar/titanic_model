@@ -22,7 +22,7 @@ class preprocessing(BaseEstimator, TransformerMixin):
         # family member total
         X['family'] = X['SibSp'] + X['Parch']
         # create a title column
-        X['title'] = X.Name.str.extract(' ([A-Za-z]+)\.', expand=False)
+        X['title'] = X['Name'].str.extract(' ([A-Za-z]+)\.', expand=False)
         X['title'] = X['title'].replace('Mlle', 'Miss')
         X['title'] = X['title'].replace('Ms', 'Miss')
         X['title'] = X['title'].replace('Mme', 'Mrs')

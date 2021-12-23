@@ -14,9 +14,7 @@ def drop_na_inputs(*, input_data: pd.DataFrame) -> pd.DataFrame:
         var
         for var in config.model_config.features
         if var
-        not in config.model_config.cat_to_impute_frequent +
-               config.model_config.cat_to_impute_missing + 
-               config.model_config.num_to_impute
+        not in config.model_config.vars_with_na
         and validated_data[var].isnull().sum() > 0
     ]
     validated_data.dropna(subset=new_vars_with_na, inplace=True)
@@ -33,7 +31,7 @@ def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional
 
     try:
         # replace numpy nans so that pydantic can validate
-        TitanicDataInputs(
+        MultipleTitanicDataInputs(
             inputs=validated_data.replace({np.nan: None}).to_dict(orient="records")
         )
     except ValidationError as error:
@@ -56,5 +54,5 @@ class TitanicInputSchema(BaseModel):
     Embarked: Optional[str]
 
 
-class TitanicDataInputs(BaseModel):
+class MultipleTitanicDataInputs(BaseModel):
     inputs: List[TitanicInputSchema]
