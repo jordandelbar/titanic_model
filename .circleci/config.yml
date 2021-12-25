@@ -73,7 +73,7 @@ workflows:
             branches:
               only:
                 - main
-#          <<: *tags_only
+          <<: *tags_only
 
 tags_only: &tags_only
   filters:
