@@ -1,5 +1,10 @@
 version: 2
 
+general:
+  branches:
+    only:
+      - main
+
 defaults: &defaults
   docker:
     - image: circleci/python:3.9.5
