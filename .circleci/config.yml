@@ -72,12 +72,5 @@ workflows:
           filters:
             branches:
               only:
-                - main
-          <<: *tags_only
-
-tags_only: &tags_only
-  filters:
-    branches:
-      ignore: /.*/
-    tags:
-      only: /^.*/
+            tags:
+              only: /^v.*/
