@@ -7,3 +7,5 @@ numpy>=1.21.4,<1.22.0
 scikit-learn>=1.0.1,<1.1.0
 feature-engine>=1.1.0,<1.2.0
 pytest
+# for data fetching
+kaggle>=1.5.12,<1.6.0
