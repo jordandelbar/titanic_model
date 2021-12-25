@@ -72,7 +72,7 @@ workflows:
                 - main
       - upload_model:
           - requires:
-            test_package
+            - test_package
           filters:
             branches:
               only:
