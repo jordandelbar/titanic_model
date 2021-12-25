@@ -54,10 +54,6 @@ jobs:
           command: |
             tox -e fetch_data
       - run:
-          name: Test the model
-          command: |
-            tox
-      - run:
           name: Publish model to Gemfury
           command: |
             tox -e publish_model
