@@ -23,13 +23,13 @@ prepare_tox: &prepare_tox
     command: |
       sudo pip install --upgrade pip
       pip install --user tox
-fetch_data: &fetch_data
-  run:
-    name: Set script permissions and fetch data
-    command: |
-      source venv/bin/activate
-      chmod +x ./scripts/get_datasets.sh
-      ./scripts/get_datasets.sh
+#fetch_data: &fetch_data
+#  run:
+#    name: Set script permissions and fetch data
+#    command: |
+#      source venv/bin/activate
+#      chmod +x ./scripts/get_datasets.sh
+#      ./scripts/get_datasets.sh
 jobs:
   test_package:
     <<: *defaults
