@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 general:
   branches:
@@ -58,7 +58,7 @@ jobs:
           command: |
             tox -e publish_model
 workflows:
-  version: 2
+  version: 2.1
   section:
     jobs:
       - test_package:
@@ -71,7 +71,6 @@ workflows:
             - test_package
           filters:
             branches:
-              only:
-                - main
+              ignore: /.*/
             tags:
               only: /^v.*/
