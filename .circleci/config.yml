@@ -37,8 +37,36 @@ jobs:
           name: Runnning app tests
           command: |
             tox
+  upload_model:
+    <<: *defaults
+    working_directory: ~/titanic
+    steps:
+      - checkout:
+          path: ~/titanic
+      - *prepare_tox
+      - run:
+          name: Fetch the data
+          command: |
+            tox -e fetch_data
+      - run:
+          name: Test the model
+          command: |
+            tox
+      - run:
+          name: Publish model to Gemfury
+          command: |
+            tox -e publish_model
 workflows:
   version: 2
   section:
     jobs:
       - test_package
+      - upload_model
+#          <<: *tags_only
+
+tags_only: &tags_only
+  filters:
+    branches:
+      ignore: /.*/
+    tags:
+      only: /^.*/
