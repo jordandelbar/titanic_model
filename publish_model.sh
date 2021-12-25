@@ -22,7 +22,7 @@ die() {
 build() {
     DIR="${1/%\//}"
     echo "Checking directory $DIR"
-    cd "$BASE_DIR/$DIR"
+    cd "$BASE_DIR"
     [ ! -e $SETUP ] && warn "No $SETUP file, skipping" && return
     PACKAGE_NAME=$(python $SETUP --fullname)
     echo "Package $PACKAGE_NAME"
