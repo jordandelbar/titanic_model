@@ -41,7 +41,7 @@ jobs:
       - run:
           name: Runnning app tests
           command: |
-            tox
+            tox -e test_package
   upload_model:
     <<: *defaults
     working_directory: ~/titanic
