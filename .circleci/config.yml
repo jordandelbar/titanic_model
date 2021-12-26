@@ -30,6 +30,11 @@ fetch_data: &fetch_data
       source venv/bin/activate
       chmod +x ./scripts/get_datasets.sh
       ./scripts/get_datasets.sh
+train_model: &train_model
+  run:
+    name: Tain model
+    command: |
+      tox -e train_model
 jobs:
   test_package:
     <<: *defaults
@@ -38,6 +43,7 @@ jobs:
       - checkout:
           path: ~/titanic
       - *prepare_tox
+      - *train_model
       - run:
           name: Runnning app tests
           command: |
