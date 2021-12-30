@@ -15,6 +15,7 @@ def make_prediction(input_data: t.Union[pd.DataFrame, dict]) -> dict:
     """Make a prediction using a saved model pipeline"""
 
     data = pd.DataFrame(input_data)
+    data.replace('null', np.nan, inplace=True)
     validated_data, errors = validate_inputs(input_data=data)
     results = {"predictions": None, "version": _version, "errors": errors}
 
