@@ -71,10 +71,6 @@ workflows:
             - test_package
           filters:
             tags:
-<<<<<<< HEAD
               only: /v.*/
-=======
-              only: /^v.*/
             branches:
               ignore: /.*/
->>>>>>> test tag system
