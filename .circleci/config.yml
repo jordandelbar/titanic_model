@@ -67,10 +67,8 @@ workflows:
               only:
                 - main
       - upload_model:
-          requires:
-            - test_package
           filters:
             tags:
-              only: /v.*/
+              only: /^v.*/
             branches:
               ignore: /.*/
