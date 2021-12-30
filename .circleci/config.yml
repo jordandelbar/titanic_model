@@ -8,7 +8,7 @@ general:
 defaults: &defaults
   docker:
     - image: circleci/python:3.9.5
-  working_directory: ~/titanic
+  working_directory: ~/titanic_model
 
 prepare_venv: &prepare_venv
   run:
@@ -33,10 +33,10 @@ fetch_data: &fetch_data
 jobs:
   test_package:
     <<: *defaults
-    working_directory: ~/titanic
+    working_directory: ~/titanic_model
     steps:
       - checkout:
-          path: ~/titanic
+          path: ~/titanic_model
       - *prepare_tox
       - run:
           name: Runnning app tests
@@ -44,10 +44,10 @@ jobs:
             tox
   upload_model:
     <<: *defaults
-    working_directory: ~/titanic
+    working_directory: ~/titanic_model
     steps:
       - checkout:
-          path: ~/titanic
+          path: ~/titanic_model
       - *prepare_tox
       - run:
           name: Fetch the data
