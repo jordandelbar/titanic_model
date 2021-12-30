@@ -70,7 +70,11 @@ workflows:
           requires:
             - test_package
           filters:
+            tags:
+<<<<<<< HEAD
+              only: /v.*/
+=======
+              only: /^v.*/
             branches:
               ignore: /.*/
-            tags:
-              only: /v.*/
+>>>>>>> test tag system
