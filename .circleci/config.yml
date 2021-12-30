@@ -70,7 +70,7 @@ workflows:
           requires:
             - test_package
           filters:
-            branches:
-              ignore: /.*/
             tags:
               only: /^v.*/
+            branches:
+              ignore: /.*/
