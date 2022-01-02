@@ -24,7 +24,7 @@ def make_prediction(input_data: t.Union[pd.DataFrame, dict]) -> dict:
             X=validated_data[config.model_config.features]
         )
         results = {
-            "predictions": [predictions],
+            "predictions": [i for i in predictions],
             "version": _version,
             "errors": errors
         }
